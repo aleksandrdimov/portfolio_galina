@@ -1,0 +1,232 @@
+.banner {
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    color: $color-white;
+
+    &__container {
+        position: relative;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    &__info-box {
+        position: absolute;
+        right: 0;
+        bottom: 55px;
+        text-align: end;
+        order: 1;
+    }
+
+    &__social {
+        align-self: end;
+        margin-bottom: 55px;
+        order: 2;
+    }
+
+    &__content {
+        align-self: center;
+        max-width: 653px;
+        order: 3;
+    }
+
+    &__title {
+        font-family: $font-mak, sans-serif;
+        font-weight: 700;
+        font-size: 42px;
+        line-height: 59px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+
+        &_second {
+            display: none;
+        }
+    }
+
+    &__text {
+        font-family: $font-mont, sans-serif;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: 28px;
+    }
+}
+
+.social {
+    display: flex;
+
+    &__menu {
+        display: none;
+    }
+
+    &__link {
+        font-family: $font-mont, sans-serif;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 26px;
+        color: $color-white;
+        text-transform: uppercase;
+        transition: all .5s ease;
+
+        &:not(:last-of-type) {
+            margin-right: 34px;
+        }
+
+        &:hover {
+            color: $color-pink;
+            transition: all .5s ease;
+        }
+    }
+}
+
+.about-me {
+    height: 100vh;
+    width: 100vw;
+    background: white;
+}
+
+.my-works {
+    height: 100vh;
+    width: 100vw;
+    background: grey;
+}
+
+@media (max-width: 1199px) {
+    .banner {
+        &__title {
+            font-size: 32px;
+            line-height: 45px;
+        }
+
+        &__text {
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .banner {
+        &__title {
+            font-size: 32px;
+            line-height: 45px;
+        }
+
+        &__text {
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+
+    .social {
+        &__link {
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .banner {
+        &__container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        &__info-box {
+            position: static;
+            text-align: start;
+            align-self: start;
+            padding-top: 80px;
+            order: 1;
+        }
+
+        &__social {
+            align-self: end;
+            margin-bottom: 25px;
+            order: 3;
+        }
+
+        &__content {
+            margin: auto;
+            order: 2;
+        }
+    }
+}
+
+@media (max-width: 599px) {
+    .banner {
+        &__info-box {
+            padding-top: 50px;
+            padding-right: 50px;
+        }
+
+        &__social {
+            margin-bottom: 0px;
+        }
+
+        &__content {
+            align-self: end;
+            margin: 0;
+        }
+
+        &__title {
+            font-size: 22px;
+            line-height: 31px;
+            margin-bottom: 6px;
+            max-width: 70vw;
+
+            &_first {
+                display: none;
+            }
+
+            &_second {
+                display: block;
+            }
+        }
+
+        &__text {
+            font-size: 12px;
+            line-height: 15px;
+            margin-bottom: 55px;
+            max-width: 62vw;
+        }
+    }
+
+    .social {
+        width: 100%;
+        justify-content: space-between;
+
+        &__banner {
+            display: none;
+        }
+
+        &__menu {
+            display: flex;
+            opacity: 0;
+            transform: translateY(100%);
+
+            &.js-active {
+                animation: swipeUp .4s ease forwards 2.1s;
+            }
+        }
+
+        &__link {
+            font-size: 12px;
+            line-height: 16px;
+
+            &:not(:last-of-type) {
+                margin-right: 0px;
+            }
+
+            &_black {
+                color: $color-black;
+
+            }
+        }
+    }
+}

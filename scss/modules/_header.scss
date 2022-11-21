@@ -1,0 +1,326 @@
+.header {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 90px;
+
+    &.js-fixed {
+        position: fixed;
+    }
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo {
+        color: $color-pink;
+        font-family: $font-mont, sans-serif;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 36.5px;
+        cursor: pointer;
+    }
+
+    &__box {
+        z-index: 4;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 350px;
+        width: 100%;
+    }
+}
+
+.burger {
+    position: relative;
+    z-index: 5;
+    width: 78px;
+    height: 20px;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    transition: all .6s ease 0s;
+
+    &.js-active span,
+    &.js-active span,
+    &.js-active span::before,
+    &.js-active span::after,
+    &.js-fixed-black span,
+    &.js-fixed-black span,
+    &.js-fixed-black span::before,
+    &.js-fixed-black span::after {
+        background: $color-black;
+    }
+
+    &.js-active & {
+        &__line-left {
+            left: 0;
+        }
+
+        &__line-right {
+            right: 0;
+        }
+    }
+
+    &.js-active {
+        & span::before {
+            width: 44px;
+            left: 17px;
+        }
+
+        & span::after {
+            width: 44px;
+            right: 17px;
+        }
+    }
+
+    &:hover {
+        & span::before {
+            left: 24px;
+        }
+
+        & span::after {
+            right: 24px;
+        }
+
+        &.js-active span::before {
+            width: 30px;
+            left: 24px;
+        }
+
+        &.js-active span::after {
+            width: 30px;
+            right: 24px;
+        }
+    }
+
+    &:hover & {
+        &__line-left {
+            left: 0;
+        }
+
+        &__line-right {
+            right: 0;
+        }
+    }
+
+
+    &__line-left {
+        width: 30px;
+        height: 3px;
+        background: $color-white;
+        border-radius: 3px;
+        transition: all .4s ease 0s;
+        position: absolute;
+        left: 6px;
+        top: 9px;
+        z-index: 5;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -9px;
+            left: 0px;
+            z-index: 5;
+            width: 30px;
+            height: 3px;
+            background: $color-white;
+            border-radius: 3px;
+            transition: all .4s ease 0s;
+        }
+    }
+
+    &__line-right {
+        width: 30px;
+        height: 3px;
+        background: $color-white;
+        border-radius: 3px;
+        transition: all .4s ease 0s;
+        position: absolute;
+        right: 6px;
+        top: 9px;
+        z-index: 5;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 9px;
+            right: 0px;
+            z-index: 5;
+            width: 30px;
+            height: 3px;
+            background: $color-white;
+            border-radius: 3px;
+            transition: all .4s ease 0s;
+
+        }
+    }
+}
+
+.nav {
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    top: 0;
+    width: 700px;
+    height: 100vh;
+    background: $color-white;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding-left: 70px;
+    transform: translateY(-100%);
+    transition: all .4s ease;
+
+    &.js-active {
+        transform: translateY(0);
+        transition: all .4s ease;
+    }
+
+    &__item {
+        opacity: 0;
+        transform: translateX(-20%);
+
+        &:not(:last-of-type) {
+            margin-bottom: 30px;
+        }
+
+        &.js-active {
+            &:nth-of-type(1) {
+                animation: swipe .4s ease forwards .5s;
+            }
+
+            &:nth-of-type(2) {
+                animation: swipe .4s ease forwards .7s;
+            }
+
+            &:nth-of-type(3) {
+                animation: swipe .4s ease forwards .9s;
+            }
+
+            &:nth-of-type(4) {
+                animation: swipe .4s ease forwards 1.1s;
+            }
+
+            &:nth-of-type(5) {
+                animation: swipe .4s ease forwards 1.3s;
+            }
+
+            &:nth-of-type(6) {
+                animation: swipe .4s ease forwards 1.5s;
+            }
+
+            &:nth-of-type(7) {
+                animation: swipe .4s ease forwards 1.7s;
+            }
+        }
+    }
+
+    &__link {
+        font-family: $font-mak, sans-serif;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 42px;
+        letter-spacing: 3px;
+        color: $color-black;
+        text-transform: uppercase;
+    }
+}
+
+@media (max-width: 992px) {
+    .header {
+        padding: 30px 30px;
+    }
+
+    .nav {
+        width: 70vw;
+
+        &__item {
+            &:not(:last-of-type) {
+                margin-bottom: 25px;
+            }
+        }
+
+        &__link {
+            font-size: 24px;
+            line-height: 36px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .header {
+        padding: 16px 16px;
+
+        &__box {
+            max-width: 300px;
+        }
+    }
+
+    .nav {
+        width: 80vw;
+        padding-left: 40px;
+
+        &__item {
+            &:not(:last-of-type) {
+                margin-bottom: 25px;
+            }
+        }
+
+        &__link {
+            font-size: 24px;
+            line-height: 36px;
+        }
+    }
+}
+
+@media (max-width: 599px) {
+    .header {
+
+        &__logo {
+            font-size: 18px;
+            line-height: 22px;
+        }
+
+        &__box {
+            max-width: 80px;
+        }
+    }
+
+    .nav {
+        width: 85vw;
+        justify-content: end;
+        padding: 25px 20px;
+
+        &__item {
+            &:not(:last-of-type) {
+                margin-bottom: 20px;
+            }
+
+            &:last-of-type {
+                margin-bottom: 40px;
+            }
+        }
+
+        &__link {
+            font-size: 20px;
+            line-height: 28px;
+        }
+    }
+}
+
+@keyframes swipe {
+    from {
+        transform: translateX(-20%);
+    }
+
+    to {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
